@@ -1,15 +1,31 @@
 # dot-net-microservices
-This repository is meant to explain with simple samples how to design and develop robust microservices using .NET and C#. This hands-on guide will take you on a journey through the world of microservices architecture and help you craft scalable, maintainable, and fault-tolerant applications.
+This repository is meant to explain with simple samples how to design and develop microservices using .NET and C#. This hands-on guide will take you on a journey through the world of microservices architecture and help you craft scalable, maintainable, and fault-tolerant applications.
+
+### Technologies
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white) 
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=c-sharp&logoColor=white) 
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) 
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](./LICENSE)
 
 # Summary
 This repository pretends to be a base for a small course about how to build microservices with .Net and C#. In the repository there are several .Net projects simulating 2 microservices of a fictinional Bank System.
 
-The first microservices is the Account Management, and the second one is the Notification service of the Bank system. As you can see in the following image even both microservices are built with .Net, the Account Management Service uses MongoDB as Database and the API's are built with the Controller approach. The Notification service is built with the minimal API approach and uses PostgreSQL as a Database.
+The first microservices is the Account Management, and the second one is the Notification service of the Bank system. As you can see in the following image even both microservices are built with .Net, the Account Management Service uses MongoDB as Database and the API's are built with the Controller approach. The Notification service was built using the minimal API approach and PostgreSQL as the database. The entire repository is based on the Julio Casal course that can be found at [YouTube](https://www.youtube.com/watch?v=ByYyk8eMG6c).
 
 ![image](https://github.com/Nattanahel-Chaves/dot-net-microservices/assets/118920372/85658d0a-9847-4fd2-a153-b63dba3f988a)
 
 Each folder in the repository contains only the code for one of the microservices, in a different stage of development. For instance, the folder 02-Account Service is the first version of the service, while the 09-Account Service is the final version of the same service. Inside each project the README file will gide you about the commands and tasks to be completed.
 
+# How to install it?
+1. Clone the repository
+2. Install [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet). The project was created with dotnet version 7, the migration to version 8 is in progress.
+3. Install docker.
+4. Move to the subfolders and follow the instructions.
+
+# Chapters
 
 - [The most basic microservice in .Net](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/01-Basic#readme) 
 - [Account Management Service with in memory DB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/02-AccountService#readme)
@@ -24,3 +40,5 @@ Each folder in the repository contains only the code for one of the microservice
 - [Notification Service consumming messages from RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/11-NotificationService#readme)
 - [Contracts share between services](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/12-Contracts#readme)
 
+# Known issues / Improvements 
+The code was created with dotnet version 7, migration to version 8 is in progress.

@@ -6,7 +6,7 @@ A .Net microservice is just a web project with API's. The simplest way to create
 dotnet new webapi -n myprojectname 
 ```
 
-This template will create a project that includes one controller and enabled swagger by default. The controller is located in the Controllers folder with the name ```WeatherForecastController.cs``` the template includes a class named ```WeatherForecast``` that has the definition of the object returned by the Web API every time the service receives a GET request. In the ```WeatherForecastController.cs``` file there is the logic to generate random values each time the WEB receives a request.
+This template will create a project that includes one controller and enabled swagger by default. The controller is located in the Controllers folder with the name ```WeatherForecastController.cs``` the template includes a class named ```WeatherForecast``` that has the definition of the object returned by the Web API every time the service receives a GET request. In the ```WeatherForecastController.cs``` file there is the logic to generate random values each time the service receives a request.
 
 To run the project run the following command inside the folder where the csproj file is located.
 
