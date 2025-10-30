@@ -24,16 +24,33 @@ dotnet add package MongoDB.Driver
 ```
 
 **Run a MondoDB**
-You can run the database in many ways, in your local environment, on the cloud or in a container, for this course the MongoDB runs in a container, if you want to run the container with mongo use the follow command:
-``` powershell 
-docker run -d --rm --name mongo -p 27017:27017 -v mongodbcontainerdata:/data/db mongo
+You can run the database in many ways, in your local environment, on the cloud or in a container, for this course the MongoDB runs in a container, if you want to run the container with mongo use the follow commands:
+
+#### Pull the MongoDB Docker Image
+
+To get the latest MongoDB image from Docker Hub, use:
+
+```powershell 
+docker pull mongo:latest
 ```
-**Important**
 
-If you're running the docker engine on Windows, change the volume path in the previous command
+#### Run a MongoDB Container
+Start a MongoDB container with default settings:
+```powershell 
+docker run --name mongodb -d -p 27017:27017 mongo:latest
+```
 
-``` powershell 
-docker run -d --rm --name mongo -p 27017:27017 -v mongodbcontainerdata:c:\data\db mongo
+```powershell
+--name mongodb: Assigns a name to the container.
+-p 27017:27017: Maps the container's port to the host's port.
+```
+
+#### Persist Data
+
+To ensure data persists across container restarts, mount a volume:
+
+```powershell 
+docker run --name mongodb -d --rm   -v mongodbcontainerdata:/data/db -p 27017:27017 mongo:latest
 ```
 
 **Create an Extension to convert an Entity.Account in an AccountInfo object**
@@ -48,6 +65,11 @@ var mongoClient= new MongoClient(Environment.GetEnvironmentVariable("MongoDBConn
 
 Before you run your application, if you want to follow this approach, you need to create an environment variable using for example the following command, the value localhost:27017 should be adjust based on your environment:
 
-``` bash
+Using bash
+```bash
 export MongoDBConnString="mongodb://localhost:27017"
+```
+Using PowerShell
+```PowerShell
+[System.Environment]::SetEnvironmentVariable("MongoDBConnString", "mongodb://localhost:27017", "User")
 ```
