@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BestBank.NotificationService.Migrations
 {
     [DbContext(typeof(NotificationDbContext))]
-    [Migration("20251102150100_firstmigration")]
+    [Migration("20251102155515_firstmigration")]
     partial class firstmigration
     {
         /// <inheritdoc />

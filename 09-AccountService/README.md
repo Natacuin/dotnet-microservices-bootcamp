@@ -46,6 +46,12 @@ docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 -v rabbitmqdata:/
 ***Note***
 We're setting the RabbitMQ host using an environment variable, you need to set that value before running the application using a command like this, remember to replace the value 127.0.0.1 with your current value.
 
+Using bash
 ``` bash
 export RabbitMQHost="127.0.0.1"
+```
+
+Using PowerShell
+```PowerShell
+[System.Environment]::SetEnvironmentVariable("RabbitMQHost", "127.0.0.1", "User")
 ```

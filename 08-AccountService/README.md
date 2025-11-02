@@ -61,4 +61,14 @@ public async void PushNotification(CreateNotification notification)
 }
 ```
 ***Note***
-We're setting the URL of the API of the notification service with an environment variable, you need to set that value before running the application.
+The repo uses the URL of the API of the notification service with an environment variable, if you want to follow the same approach need to run a similar command like:
+
+Using bash
+``` bash
+export NotificationServiceEndpoint="http://localhost:5022"
+```
+
+Using PowerShell
+```PowerShell
+[System.Environment]::SetEnvironmentVariable("NotificationServiceEndpoint", "http://localhost:5022", "User")
+```
