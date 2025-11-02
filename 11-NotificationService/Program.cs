@@ -5,9 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMassTransit( x=>
@@ -35,6 +32,8 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+var emulate500Error = false;
+
 app.MapGet("/", async (NotificationDbContext db) => await db.Notifications.ToListAsync());
 
 app.MapGet("/{id}", async (Guid id, NotificationDbContext db) =>
@@ -45,33 +44,54 @@ app.MapGet("/{id}", async (Guid id, NotificationDbContext db) =>
     : Results.NotFound();
 });
 
+
 app.MapPost("/", async (CreateNotification createNotification, NotificationDbContext db) =>
 {
-    Random random = new Random();
-    var result = random.Next(1, 10);
-    if (result > 4)
+    if (emulate500Error)
     {
-        Console.WriteLine("Error 500");
-        return Results.StatusCode(StatusCodes.Status500InternalServerError);
+        Random random = new Random();
+        var result = random.Next(1, 10);
+        if (result > 4)
+        {
+            Console.WriteLine("Error 500 - Simulated");
+            return Results.StatusCode(StatusCodes.Status500InternalServerError);
 
+        }
+        else
+        {
+            var newnotification = new Notification
+            {
+                Id = Guid.NewGuid(),
+                AccountId = createNotification.AccountId,
+                Message = createNotification.Message,
+                IsCompleted = false,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+
+
+            await db.Notifications.AddAsync(newnotification);
+            await db.SaveChangesAsync();
+            Console.WriteLine("Ok 200");
+            return Results.Created($"/{newnotification.Id}", newnotification);
+
+        }
     }
     else
     {
         var newnotification = new Notification
-        {
-            Id = Guid.NewGuid(),
-            AccountId = createNotification.AccountId,
-            Message = createNotification.Message,
-            IsCompleted = false,
-            CreatedDate = DateTimeOffset.UtcNow
-        };
+            {
+                Id = Guid.NewGuid(),
+                AccountId = createNotification.AccountId,
+                Message = createNotification.Message,
+                IsCompleted = false,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
 
 
-        await db.Notifications.AddAsync(newnotification);
-        await db.SaveChangesAsync();
-        Console.WriteLine("Ok 200");
-        return Results.Created($"/{newnotification.Id}", newnotification);
-        
+            await db.Notifications.AddAsync(newnotification);
+            await db.SaveChangesAsync();
+            Console.WriteLine("Ok 200");
+            return Results.Created($"/{newnotification.Id}", newnotification);
     }
 });
 
