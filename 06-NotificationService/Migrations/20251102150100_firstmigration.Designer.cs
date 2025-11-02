@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BestBank.NotificationService.Migrations
 {
     [DbContext(typeof(NotificationDbContext))]
-    [Migration("20230831201717_firstmigration")]
+    [Migration("20251102150100_firstmigration")]
     partial class firstmigration
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace BestBank.NotificationService.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "9.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

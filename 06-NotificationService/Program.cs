@@ -26,7 +26,19 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapGet("/", async (NotificationDbContext db) => await db.Notifications.ToListAsync());
+app.MapGet("/", async (NotificationDbContext db) =>
+{
+    try
+    {
+        return Results.Ok(await db.Notifications.ToListAsync());
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error fetching notifications: {ex.Message}");
+        return Results.Problem("An error occurred while fetching notifications.");
+    }
+});
+
 
 app.MapGet("/{id}", async (Guid id, NotificationDbContext db) =>
 {

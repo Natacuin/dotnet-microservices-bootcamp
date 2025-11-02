@@ -71,6 +71,12 @@ options.UseNpgsql(Environment.GetEnvironmentVariable("PostgresConnectionString")
 
 Before you run your application, if you want to follow this approach, you need to create an environment variable using for example the following command. You need to replace the values in _Server_, _Port_, _Database_, _User_Id_ and _Password_ based on your own data.
 
+Using bash
 ``` bash
 export PostgresConnectionString="Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;"
+```
+
+Using PowerShell
+```PowerShell
+[System.Environment]::SetEnvironmentVariable("PostgresConnectionString", "Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;", "User")
 ```
