@@ -16,7 +16,7 @@ This repository pretends to be a base for a small course about how to build micr
 
 The first microservices is the Account Management, and the second one is the Notification service of the Bank system. As you can see in the following image even both microservices are built with .Net, the Account Management Service uses MongoDB as Database and the API's are built with the Controller approach. The Notification service was built using the minimal API approach and PostgreSQL as the database. The entire repository is based on the Julio Casal course that can be found at [YouTube](https://www.youtube.com/watch?v=ByYyk8eMG6c).
 
-![image](https://github.com/Natacuin/dotnet-microservices-bootcamp/summary.png)
+![image](./Summary.png)
 
 Each folder in the repository contains only the code for one of the microservices, in a different stage of development. For instance, the folder 02-Account Service is the first version of the service, while the 09-Account Service is the final version of the same service. Inside each project the README file will gide you about the commands and tasks to be completed.
 
