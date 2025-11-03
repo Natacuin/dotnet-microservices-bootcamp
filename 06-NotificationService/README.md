@@ -1,6 +1,6 @@
-**Add DB Support**
+# Notification Service v2
 
-This version of the Notification Services works with PostgreSQL, to use that the project import dependencies for Entity Framework and allow the migration process.
+This version of Notification Services works with PostgreSQL. To use it, import the project dependencies for Entity Framework and enable the migration process.
 
 **Add Entity Framework for PostgreSQL**
 Use the following commands

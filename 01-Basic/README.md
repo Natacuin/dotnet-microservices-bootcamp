@@ -1,3 +1,6 @@
+# Basic microservice
+This folder contains the commands necessary to create a Web API project with .NET. The project will change and become more complex.
+
 **Most simple microservice with .net**
 
 A .Net microservice is just a web project with API's. The simplest way to create a Web API in .Net 6 is running the following command:

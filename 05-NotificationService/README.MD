@@ -1,5 +1,7 @@
-**Notification Service**
+# Notification Service v1
 This first version of the Notification Service does not use a real Database and is created with the *web* template instead the *web-api* template. This will create a default minimal API sample.
+
+In this first version of the service, the information is stored in memory. That's mean that every time the service restarts, the data is lost.
 
 **Create the project**
 

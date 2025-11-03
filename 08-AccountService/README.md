@@ -1,6 +1,8 @@
+# Account Service v3
+
 **Account Management Service invoking Notification Service**
 
-Before this version Account Service and Notification Service worked independently. Now we want to invoke the Notification Service if a certain condition is met.
+Before this version Account Service and Notification Service worked independently. Now Account Service will invoke the Notification Service if a certain condition is met: When an account record is updated.
 
 **Invoke the Notification Service**
 
@@ -8,7 +10,7 @@ In order to invoke the notification service, you should add a ```Client``` class
 
 **Important**
 
-To test this version you need both databases and services working at the same time. In the first version of the ```NotificationClient.cs``` you can use a code like this:
+To test this version you need both databases and services working at the same time. For the first version of the ```NotificationClient.cs``` you can use a code like this:
 
 ``` C#
  public async void PushNotification(CreateNotification notification)
@@ -20,7 +22,6 @@ To test this version you need both databases and services working at the same ti
     Console.WriteLine(responseBody);
 }
 ```
-
 **Handle communication errors** 
 
 Because this kind of communication can result in failures, there are techniques to handle communication errors, time out, etc. Using the following package the application can implement patterns like Circuit Breaker.

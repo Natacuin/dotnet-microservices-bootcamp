@@ -1,3 +1,4 @@
+# Notification Service v3
 **Final version of Notification Service**
 
 This final version of the Notification Service not only allow to create notification via Http Requests, but is listening the RabbitMQ to get messages put by other services (Account Management Service in this case).
@@ -19,3 +20,10 @@ builder.Services.AddMassTransit( x=>
 
 ```
 Then you need to create a class that will be the consumer of the message. This class must implemente the IConsumer interface.
+
+# Emulate 500 errors
+This project has the option to randomly generate fake 500 erros. To enable that go to the `program.cs` file and change the following line of code frm `false` to `true`:
+
+```C#
+var emulate500Error = false;
+```

@@ -7,6 +7,7 @@ This repository is meant to explain with simple samples how to design and develo
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) 
+![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat&logo=rabbitmq&logoColor=white)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](./LICENSE)
 
@@ -21,9 +22,23 @@ Each folder in the repository contains only the code for one of the microservice
 
 # How to install it?
 1. Clone the repository
-2. Install [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet). The project was created with dotnet version 7, the migration to version 8 is in progress.
+2. Install [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet).
 3. Install docker.
 4. Move to the subfolders and follow the instructions.
+
+# How to run it?
+If you want to run the final version of the entiry project:
+1. Go to the 10-Infrastructure folder and run `docker-compose up` command.
+2. Go to the 11-NotificationService folder and run the `dotnet run` command.
+3. Go to the 09-AccountService folder and run the `dotnet run` command.
+4. In the Account Service endpoint append `swagger`add at least one account and then edit it. Make sure the balance is less than 50 in the PUT request. You can interact with the endpoint with a tool like Postman too.
+5. In the Notification service endpoint append `swagger` and execute a GET request. You can interact with the endpoint with a tool like Postman too.
+6. Optional. If you want to emulate Notification Service 500 errors go to the `program.cs` file and change the following line of code frm `false` to `true`:
+
+```C#
+var emulate500Error = false;
+```
+
 
 # Chapters
 
@@ -39,6 +54,3 @@ Each folder in the repository contains only the code for one of the microservice
 - [Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/10-Infrastructure#readme)
 - [Notification Service consumming messages from RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/11-NotificationService#readme)
 - [Contracts share between services](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/12-Contracts#readme)
-
-# Known issues / Improvements 
-The code was created with dotnet version 7, migration to version 8 is in progress.

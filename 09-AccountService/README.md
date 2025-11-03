@@ -1,6 +1,7 @@
+# Account Service v4
 **Account Management Services sends messages instead of invoking the Notification Service** 
 
-This version of the Account Service uses RabbitMQ to send messages to the Notification Service. This allows the Account Management Service to work even if the Notification Service is unavailable.
+This final version of the Account Service uses RabbitMQ to send messages to the Notification Service. This allows the Account Management Service to work even if the Notification Service is unavailable.
 
 **Using Rabbit MQ**
 
@@ -36,15 +37,17 @@ builder.Services.AddMassTransit( x=>
 });
 ```
 
-
-In order to test this version of the service you need to update the Notification Server too, go to the 11-NotificationService section in the repository to make the changes. If you want to run the RabbitMQ as a container you can use this command:
+In order to test this version of the service you need to update the Notification Service too, go to the 11-NotificationService folder to make the changes. If you want to run the RabbitMQ as a container you can use this command:
 
 ``` powershell
 docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 -v rabbitmqdata:/var/lib/rabbitmq --hostname rabbitmq rabbitmq:management
 ```
+***Note***
+Notification Service is invoke __only__ if you request a PUT to any acount and the balance is less than 50
+
 
 ***Note***
-We're setting the RabbitMQ host using an environment variable, you need to set that value before running the application using a command like this, remember to replace the value 127.0.0.1 with your current value.
+This repo is setting the RabbitMQ host using an environment variable, you need to set that value before running the application using a command like this, remember to replace the value 127.0.0.1 with your current value.
 
 Using bash
 ``` bash
